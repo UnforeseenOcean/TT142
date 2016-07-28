@@ -4,7 +4,7 @@ var mysql      = require('mysql');
  var sqlconnection = mysql.createConnection({
    host     : 'localhost',
    user     : 'root',
-   password : 'XrBtZr64L6',
+   password : 'nein',
    database : 'discord'
  });
  sqlconnection.connect();
@@ -69,4 +69,4 @@ mybot.on("message", function(message) {
   
 })}); })
 
-mybot.loginWithToken("MjA3NTI4Njc5OTMxMjQ4NjQw.CnkbpQ.inHndUaNtVtv867iNcaTaWKjp2s");
+mybot.loginWithToken("Nein");
