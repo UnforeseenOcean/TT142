@@ -15,6 +15,7 @@ sqlconnection.connect();
 var mybot = new Discord.Client();
 CHANNEL_TO_LISTEN = "null"
 mybot.on("ready", function() {
+  mybot.sendMessage('108892284119977984', "I've been restarted! o.O")
   mybot.on("message", function(message) {
     // console.log(mybot.servers.get("id", ))
     //Fml
@@ -140,7 +141,7 @@ mybot.on("ready", function() {
                   }
                 }
               } else if (message.content.split(" ")[0] === "=lmeme") {
-                var PIC = Math.floor((Math.random() * 23) + 1);
+                var PIC = Math.floor((Math.random() * 25) + 1);
                 var PICO = "null"
 
                 console.log("waet")
@@ -210,6 +211,12 @@ mybot.on("ready", function() {
                     break;
                   case 22:
                     PICO = "https://i.gyazo.com/78352088b78e62f00cf24abb3bc430ca.png"
+                    break;
+                  case 23:
+                    PICO = "http://u3.photofunia.com/1/results/q/m/qmO4ZwdGRNAxQ47BEmNR-A_r.jpg"
+                    break;
+                  case 24:
+                    PICO = "https://i.gyazo.com/d1d26c0c0fb109a613b9eb606b6efc49.png"
                     break;
                   default:
                     PICO = "https://i.gyazo.com/67ffff888a5a3d3b54dc1816302327e1.png"
@@ -310,7 +317,7 @@ mybot.on("ready", function() {
                     } else {
                       var UPDATE = "~"
                       for (var d = 2; d < message.content.split(" ").length; d++) {
-                        UPDATE = UPDATE + message.content.split(" ")[d]
+                        UPDATE = UPDATE + message.content.split(" ")[d] + " "
                       }
                       var ADDING = rows[FUND].action + UPDATE
                       sqlconnection.query("UPDATE commands SET action=" + sqlconnection.escape(ADDING) + " WHERE team_id=" + sqlconnection.escape(SERVER_ID) + " AND cmd=" + sqlconnection.escape(message.content.split(" ")[1]) + ";")
@@ -429,7 +436,7 @@ mybot.on("ready", function() {
 })
 
 mybot.on("serverMemberUpdated", function(server, user1, user2) {
-  if (server.id === "194533269180514305" && user2 !== null) {console.log("yese!");
+  if (server.id === "194533269180514305" && user2 !== null && user2.roles) {console.log("yese!");
                                            var SPAMMO = false
  for (var bb = 0; bb < user2.roles.length; bb++) {
    if (user2.roles[bb].id === "205409757714972672") {SPAMMO = true}
@@ -455,6 +462,8 @@ mybot.on("userUnbanned", function(user, server) {
   if (server.id === "194533269180514305") {mybot.sendMessage("213094602700226562", "User `"+user.name+"` has been unbanned from SSL!\nMaybe these admins do have a heart...")}
 })
 mybot.on("messageDeleted", function(message, channel) {
+  if (channel.server) {
   if (channel.server.id === "194533269180514305" && message !== null && message.author.bot !== true) {mybot.sendMessage("213094602700226562", "A (recent) message was deleted! It contained the following text: `"+message.content+"`\nThe message was sent by `"+message.author.name+"`.")}
-})
+}})
+mybot.on("disconnected", function() {mybot.loginWithToken(JSON.parse(data).token);})
 mybot.loginWithToken(JSON.parse(data).token);});
